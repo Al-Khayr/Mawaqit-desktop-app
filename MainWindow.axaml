@@ -1,0 +1,197 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:alKhayrSalat="clr-namespace:Al_Khayr_Salat"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Al_Khayr_Salat.MainWindow"
+        Title="Al_Khayr_Salat"
+        Height="500" Width="300"
+        WindowStartupLocation="Manual"
+        SystemDecorations="None"
+        CanResize="False"
+        ShowInTaskbar="True"
+        x:DataType="alKhayrSalat:PrayerTimesViewModel"
+        Background="Transparent"
+        >
+    
+    <Window.DataContext>
+        <alKhayrSalat:PrayerTimesViewModel />
+    </Window.DataContext>
+    
+    <Border CornerRadius="5" Background="#121212">
+        <Grid>
+        <!-- Define grid rows -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/> <!-- For the header -->
+            <RowDefinition Height="Auto"/> <!-- For the header -->
+            <RowDefinition Height="0.1*"/>    <!-- Fajr -->
+            <RowDefinition Height="0.1*"/>    <!-- Dhuhr -->
+            <RowDefinition Height="0.1*"/>    <!-- ‘Asr -->
+            <RowDefinition Height="0.1*"/>    <!-- Maghrib -->
+            <RowDefinition Height="0.1*"/>    <!-- ‘Ishaa -->
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <TextBlock Grid.Row="0" 
+                   Text="Next prayer in:" 
+                   FontSize="25" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   Margin="10"
+                   FontWeight="Bold" 
+                   Foreground="White"/>
+        
+        <!-- Time -->
+        
+        <TextBlock Grid.Row="1" 
+                   FontSize="25" 
+                   HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   FontWeight="Normal" 
+                   Foreground="White"
+                   x:Name="updater"/>
+
+        <!-- Border with gradient background -->
+        <Border x:Name="FajrBorder" Grid.Row="2"
+                Background="#191919"
+                CornerRadius="3"
+                Padding="10" 
+                Margin="10">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/> <!-- This column takes remaining space -->
+                </Grid.ColumnDefinitions>
+
+                <!-- TextBlock for prayer name (left aligned) -->
+                <TextBlock Grid.Column="0" 
+                           Text="Fajr" 
+                           FontWeight="Bold" 
+                           HorizontalAlignment="Left" 
+                           Foreground="White"/>
+
+                <!-- TextBlock for time (right aligned) -->
+                <TextBlock Grid.Column="1" 
+                           Text="{Binding PrayerTimes[0].Salat_Time}" 
+                           FontWeight="Regular" 
+                           HorizontalAlignment="Right" 
+                           Foreground="White"/>
+            </Grid>
+        </Border>
+
+        <!-- Borders with solid #191919 background -->
+        <Border x:Name="DhuhrBorder" Grid.Row="3"
+                Background="#191919"
+                CornerRadius="3"
+                Padding="10" 
+                Margin="10">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/> <!-- This column takes remaining space -->
+                </Grid.ColumnDefinitions>
+
+                <!-- TextBlock for prayer name (left aligned) -->
+                <TextBlock Grid.Column="0" 
+                           Text="Dhuhr" 
+                           FontWeight="Bold" 
+                           HorizontalAlignment="Left" 
+                           Foreground="White"/>
+
+                <!-- TextBlock for time (right aligned) -->
+                <TextBlock Grid.Column="1" 
+                           Text="{Binding PrayerTimes[1].Salat_Time}" 
+                           FontWeight="Regular" 
+                           HorizontalAlignment="Right" 
+                           Foreground="White"/>
+            </Grid>
+        </Border>
+
+
+        <Border x:Name="AsrBorder" Grid.Row="4"
+                Background="#191919"
+                CornerRadius="3"
+                Padding="10" 
+                Margin="10">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/> <!-- This column takes remaining space -->
+                </Grid.ColumnDefinitions>
+
+                <!-- TextBlock for prayer name (left aligned) -->
+                <TextBlock Grid.Column="0" 
+                           Text="‘Asr" 
+                           FontWeight="Bold" 
+                           HorizontalAlignment="Left" 
+                           Foreground="White"/>
+
+                <!-- TextBlock for time (right aligned) -->
+                <TextBlock Grid.Column="1" 
+                           Text="{Binding PrayerTimes[2].Salat_Time}" 
+                           FontWeight="Regular" 
+                           HorizontalAlignment="Right" 
+                           Foreground="White"/>
+            </Grid> 
+        </Border>
+
+        <Border x:Name="MaghribBorder" Grid.Row="5"
+                Background="#191919"
+                CornerRadius="3"
+                Padding="10" 
+                Margin="10">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/> <!-- This column takes remaining space -->
+                </Grid.ColumnDefinitions>
+
+                <!-- TextBlock for prayer name (left aligned) -->
+                <TextBlock Grid.Column="0" 
+                           Text="Maghrib" 
+                           FontWeight="Bold" 
+                           HorizontalAlignment="Left" 
+                           Foreground="White"/>
+
+                <!-- TextBlock for time (right aligned) -->
+                <TextBlock Grid.Column="1" 
+                           Text="{Binding PrayerTimes[3].Salat_Time}" 
+                           FontWeight="Regular" 
+                           HorizontalAlignment="Right" 
+                           Foreground="White"/>
+            </Grid> 
+        </Border>
+
+        <Border x:Name="IshaBorder" Grid.Row="6"
+                Background="#191919"
+                CornerRadius="3"
+                Padding="10" 
+                Margin="10">
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/> <!-- This column takes remaining space -->
+                </Grid.ColumnDefinitions>
+
+                <!-- TextBlock for prayer name (left aligned) -->
+                <TextBlock Grid.Column="0" 
+                           Text="‘Ishaa" 
+                           FontWeight="Bold" 
+                           HorizontalAlignment="Left" 
+                           Foreground="White"/>
+
+                <!-- TextBlock for time (right aligned) -->
+                <TextBlock Grid.Column="1" 
+                           Text="{Binding PrayerTimes[4].Salat_Time}" 
+                           FontWeight="Regular" 
+                           HorizontalAlignment="Right" 
+                           Foreground="White"/>
+            </Grid> 
+        </Border>
+
+    </Grid>
+    </Border>
+
+
+</Window>
