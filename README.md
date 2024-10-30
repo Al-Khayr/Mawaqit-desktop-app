@@ -13,6 +13,10 @@ cross-platform C# application built with Avalonia to display Islamic prayer time
 - AvaloniaUI library
 - Internet connection for fetching prayer times
 
+## Screenshot
+
+![Screenshot of Tool](screenshots/img1.png)
+
 ## To do
 
 - Setting page
